@@ -4,14 +4,17 @@ async function loadComponent(id, path) {
 
   try {
     const response = await fetch(path);
+
     if (response.ok) {
       el.innerHTML = await response.text();
+    } else {
+      console.error('Component not found:', path);
     }
+
   } catch (err) {
     console.error('Failed to load component:', path, err);
   }
 }
 
-// Injects your components relative to the GitHub Pages repository path
-loadComponent('nav', '/the-iterative-being/components/nav.html');
-loadComponent('footer', '/the-iterative-being/components/footer.html');
+loadComponent('nav', '/components/nav.html');
+loadComponent('footer', '/components/footer.html');
